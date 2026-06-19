@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cameron Weyers — AI Automation Specialist</title>
+  <meta name="description" content="Cameron Weyers builds AI systems — agentic workflows, business automation, and AI-assisted software using Claude Code, MCP, n8n, and local LLMs." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ─── TOKENS ─────────────────────────────────────────────── */
+    :root {
+      --accent:        #4A46C8;
+      --accent-hover:  #3D39B0;
+      --accent-light:  #EEEDFE;
+      --accent-dark:   #3C3489;
+
+      --bg:            #ffffff;
+      --bg-secondary:  #F8F8F7;
+      --text-primary:  #1A1A18;
+      --text-secondary:#5C5C58;
+      --text-tertiary: #9A9A95;
+      --border:        rgba(0,0,0,0.10);
+      --border-mid:    rgba(0,0,0,0.18);
+
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────── */
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text-primary);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────── */
+    .site {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* ─── NAV ────────────────────────────────────────────────── */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .nav-logo {
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--text-primary); }
+
+    /* ─── SECTIONS ───────────────────────────────────────────── */
+    .section {
+      padding: 5rem 0;
+      border-top: 0.5px solid var(--border);
+    }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────── */
+    .hero {
+      padding: 7rem 0 6rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.8rem, 7vw, 4.2rem);
+      font-weight: 500;
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline .accent { color: var(--accent); }
+
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      max-width: 520px;
+      margin-bottom: 2rem;
+    }
+
+    .hero-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-stack span {
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 11px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: var(--font);
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-hover); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 0.5px solid var(--border-mid);
+      padding: 11px 24px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      cursor: pointer;
+      font-family: var(--font);
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.15s;
+    }
+
+    .btn-outline:hover { background: var(--bg-secondary); }
+
+    /* ─── WHAT I DO ──────────────────────────────────────────── */
+    .do-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+
+    .do-card {
+      background: var(--bg);
+      padding: 1.75rem 1.5rem;
+    }
+
+    .do-card-title {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .do-tag {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: 3px;
+      padding: 3px 8px;
+      margin: 2px 1px;
+    }
+
+    /* ─── SYSTEMS ────────────────────────────────────────────── */
+    .systems-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .sys-card {
+      background: var(--bg);
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.15s;
+    }
+
+    .sys-card:hover { border-color: var(--border-mid); }
+
+    .sys-card.featured {
+      border-color: var(--accent);
+    }
+
+    .sys-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+
+    .sys-card-title {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    .sys-badge {
+      font-size: 10px;
+      background: var(--accent-light);
+      color: var(--accent-dark);
+      padding: 3px 9px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+    }
+
+    .sys-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+
+    .sys-metrics {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .metric-num {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .metric-label {
+      font-size: 10px;
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 3px;
+    }
+
+    .sys-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    .sys-card-sm .sys-card-title { font-size: 14px; }
+    .sys-card-sm .sys-desc { font-size: 12px; margin-bottom: 1rem; }
+    .sys-card-sm .metric-num { font-size: 16px; }
+    .sys-card-sm .sys-metrics { gap: 1.25rem; }
+
+    /* ─── ABOUT ──────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .about-text {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--text-secondary);
+    }
+
+    .about-text p { margin-bottom: 1.25rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+    .about-text strong { color: var(--text-primary); font-weight: 500; }
+
+    .skills-group { margin-bottom: 1.5rem; }
+
+    .skills-group-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 0.6rem;
+    }
+
+    .skill-tag {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--text-secondary);
+      background: var(--bg-secondary);
+      border: 0.5px solid var(--border);
+      border-radius: 4px;
+      padding: 4px 10px;
+      margin: 2px 2px;
+    }
+
+    /* ─── CONTACT ────────────────────────────────────────────── */
+    .contact-sub {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+      margin-bottom: 1.75rem;
+      max-width: 520px;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      text-decoration: none;
+      border: 0.5px solid var(--border-mid);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      transition: all 0.15s;
+    }
+
+    .contact-link:hover {
+      border-color: var(--border-mid);
+      color: var(--text-primary);
+      background: var(--bg-secondary);
+    }
+
+    .contact-link svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+    }
+
+    footer span { font-size: 12px; color: var(--text-tertiary); }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────── */
+    @media (max-width: 680px) {
+      .do-grid { grid-template-columns: 1fr; }
+      .sys-row { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero { padding: 4rem 0 3.5rem; }
+      .section { padding: 3.5rem 0; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="site">
+
+  <!-- ── NAV ──────────────────────────────────────────────────── -->
+  <nav>
+    <a href="#" class="nav-logo">Cameron Weyers</a>
+    <ul class="nav-links">
+      <li><a href="#systems">Systems</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────────────────── -->
+  <section class="hero">
+    <p class="hero-eyebrow">AI Automation · Agentic Systems · Business Software</p>
+    <h1 class="hero-headline">
+      I build<br>
+      <span class="accent">AI systems.</span>
+    </h1>
+    <p class="hero-sub">
+      Agentic workflows. Business automation. AI-assisted software.
+      Turning real operational problems into working systems using modern AI tooling.
+    </p>
+    <div class="hero-stack">
+      <span>Claude Code</span>
+      <span>MCP</span>
+      <span>n8n</span>
+      <span>Local LLMs</span>
+      <span>LangGraph</span>
+      <span>OpenRouter</span>
+      <span>Python</span>
+      <span>Django</span>
+    </div>
+    <div class="btn-row">
+      <a href="#systems" class="btn-primary">View Systems</a>
+      <a href="cameron-weyers-cv.pdf" class="btn-outline" download>Download CV</a>
+    </div>
+  </section>
+
+  <!-- ── WHAT I DO ─────────────────────────────────────────────── -->
+  <section class="section" id="work">
+    <p class="section-label">What I do</p>
+    <div class="do-grid">
+      <div class="do-card">
+        <p class="do-card-title">AI Automation</p>
+        <div>
+          <span class="do-tag">Agentic workflows</span>
+          <span class="do-tag">n8n</span>
+          <span class="do-tag">Make</span>
+          <span class="do-tag">REST APIs</span>
+          <span class="do-tag">Webhooks</span>
+          <span class="do-tag">GraphQL</span>
+        </div>
+      </div>
+      <div class="do-card">
+        <p class="do-card-title">AI Systems</p>
+        <div>
+          <span class="do-tag">MCP architecture</span>
+          <span class="do-tag">Local LLMs</span>
+          <span class="do-tag">Prompt engineering</span>
+          <span class="do-tag">Vector memory</span>
+          <span class="do-tag">AI agents</span>
+        </div>
+      </div>
+      <div class="do-card">
+        <p class="do-card-title">Business Software</p>
+        <div>
+          <span class="do-tag">Payroll systems</span>
+          <span class="do-tag">POS platforms</span>
+          <span class="do-tag">Dashboards</span>
+          <span class="do-tag">Operations</span>
+          <span class="do-tag">Reporting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SYSTEMS I'VE BUILT ────────────────────────────────────── -->
+  <section class="section" id="systems">
+    <p class="section-label">Systems I've built</p>
+    <div class="systems-grid">
+
+      <!-- Hermes — flagship -->
+      <div class="sys-card featured">
+        <div class="sys-card-header">
+          <p class="sys-card-title">Hermes — AI Agent Platform</p>
+          <span class="sys-badge">Flagship</span>
+        </div>
+        <p class="sys-desc">
+          A self-hosted, production-grade agentic ecosystem running on Ubuntu 24 LTS via Tailscale.
+          Built with Ollama for local LLM inference, Chroma/Qdrant for persistent vector memory,
+          LangGraph and CrewAI for orchestration, and MCP-based connectors for Gmail, Calendar,
+          and tool access. Outputs daily briefings, Telegram nudges, voice via Whisper/TTS,
+          and a Streamlit dashboard.
+        </p>
+        <div class="sys-metrics">
+          <div class="metric">
+            <div class="metric-num">6</div>
+            <div class="metric-label">MCP Servers</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">40+</div>
+            <div class="metric-label">Tools</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">28+</div>
+            <div class="metric-label">Skills</div>
+          </div>
+          <div class="metric">
+            <div class="metric-num">∞</div>
+            <div class="metric-label">Persistent memory</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OpenClaw + n8n -->
+      <div class="sys-row">
+        <div class="sys-card sys-card-sm">
+          <div class="sys-card-header">
+            <p class="sys-card-title">OpenClaw — Local Agent Runtime</p>
+          </div>
+          <p class="sys-desc">
+            Terminal-based agentic environment using OpenRouter for prompt-driven script
+            execution and LLM benchmarking across providers.
+          </p>
+          <div class="sys-metrics">
+            <div class="metric">
+              <div class="metric-num">Local</div>
+              <div class="metric-label">Inference</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">Multi</div>
+              <div class="metric-label">LLM routing</div>
+            </div>
+          </div>
+        </div>
+        <div class="sys-card sys-card-sm">
+          <div class="sys-card-header">
+            <p class="sys-card-title">n8n Automation Pipelines</p>
+          </div>
+          <p class="sys-desc">
+            Self-hosted n8n workflows integrating local LLMs, external APIs, and recon pipelines.
+            Threat intel and data enrichment use cases.
+          </p>
+          <div class="sys-metrics">
+            <div class="metric">
+              <div class="metric-num">Self</div>
+              <div class="metric-label">Hosted</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">Local</div>
+              <div class="metric-label">LLMs</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Payroll + POS -->
+      <div class="sys-row">
+        <div class="sys-card sys-card-sm">
+          <div class="sys-card-header">
+            <p class="sys-card-title">Payroll Platform</p>
+          </div>
+          <p class="sys-desc">
+            SARS-compliant payroll and tax automation built in Python/Django with WhatsApp
+            integration for staff notifications and payslip delivery.
+          </p>
+          <div class="sys-metrics">
+            <div class="metric">
+              <div class="metric-num">7 100</div>
+              <div class="metric-label">Lines of code</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">9</div>
+              <div class="metric-label">Django apps</div>
+            </div>
+          </div>
+        </div>
+        <div class="sys-card sys-card-sm">
+          <div class="sys-card-header">
+            <p class="sys-card-title">POS Platform</p>
+          </div>
+          <p class="sys-desc">
+            Custom mobile point-of-sale system for hospitality operations — reservations,
+            inventory, table management, and reporting.
+          </p>
+          <div class="sys-metrics">
+            <div class="metric">
+              <div class="metric-num">3 600</div>
+              <div class="metric-label">Lines of code</div>
+            </div>
+            <div class="metric">
+              <div class="metric-num">46</div>
+              <div class="metric-label">Models</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── ABOUT ─────────────────────────────────────────────────── -->
+  <section class="section" id="about">
+    <p class="section-label">About</p>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm <strong>Cameron Weyers</strong> — a business operator turned AI systems builder based in the Western Cape, South Africa.</p>
+        <p>My background spans business ownership and financial accounting. Over the past two years, I've been building operational software using AI-assisted development — moving from spreadsheet automation into full agentic systems.</p>
+        <p>My current focus is agentic AI: MCP architectures, workflow orchestration, local LLM inference, and prompt-driven development. Everything I build runs in production, not just in demos.</p>
+        <p>Available for remote and contractor engagements.</p>
+      </div>
+      <div class="skills-col">
+        <div class="skills-group">
+          <p class="skills-group-label">AI &amp; Agents</p>
+          <span class="skill-tag">Claude Code</span>
+          <span class="skill-tag">MCP</span>
+          <span class="skill-tag">LangGraph</span>
+          <span class="skill-tag">CrewAI</span>
+          <span class="skill-tag">Ollama</span>
+          <span class="skill-tag">OpenRouter</span>
+          <span class="skill-tag">Prompt engineering</span>
+        </div>
+        <div class="skills-group">
+          <p class="skills-group-label">Automation</p>
+          <span class="skill-tag">n8n</span>
+          <span class="skill-tag">Make</span>
+          <span class="skill-tag">REST APIs</span>
+          <span class="skill-tag">GraphQL</span>
+          <span class="skill-tag">Webhooks</span>
+        </div>
+        <div class="skills-group">
+          <p class="skills-group-label">Development</p>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Django</span>
+          <span class="skill-tag">PostgreSQL</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Tailscale</span>
+        </div>
+        <div class="skills-group">
+          <p class="skills-group-label">Memory &amp; Data</p>
+          <span class="skill-tag">Chroma</span>
+          <span class="skill-tag">Qdrant</span>
+          <span class="skill-tag">SQLite</span>
+          <span class="skill-tag">Vector embeddings</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ────────────────────────────────────────────────── -->
+  <section class="section" id="contact">
+    <p class="section-label">Contact</p>
+    <p class="contact-sub">
+      Open to remote and contractor roles in AI automation, agentic development,
+      and workflow engineering. Reach out on LinkedIn or GitHub.
+    </p>
+    <div class="contact-row">
+      <a href="https://linkedin.com/in/cameron-weyers-132a074b" class="contact-link" target="_blank" rel="noopener">
+        <!-- LinkedIn icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect x="2" y="9" width="4" height="12"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/Koslovski79" class="contact-link" target="_blank" rel="noopener">
+        <!-- GitHub icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+        </svg>
+        GitHub
+      </a>
+      <a href="mailto:cameron@cameronweyers.dev" class="contact-link">
+        <!-- Email icon -->
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        Email
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
+  <footer>
+    <span>Cameron Weyers · cameronweyers.dev</span>
+    <span>Built with intent. Not a template.</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
