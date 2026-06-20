@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cameron Weyers Portfolio
 
-## Getting Started
+Static portfolio site for Cameron Weyers, focused on AI automation, agentic workflows, and business software.
 
-First, run the development server:
+## Live Sites
+
+- Vercel: https://cameron-weyers-portfolio.vercel.app/
+- GitHub Pages: https://koslovski79.github.io/cameron-weyers-portfolio/
+
+Vercel is the primary public URL and is used in the page metadata, sitemap, robots file, and footer.
+
+## Files
+
+- `index.html` - main one-page portfolio
+- `cameron-weyers-cv.pdf` - downloadable CV
+- `favicon.svg` - browser icon
+- `social-preview.svg` - Open Graph/Twitter preview image
+- `robots.txt` and `sitemap.xml` - search engine hints
+- `404.html` - simple not-found page
+- `vercel.json` - forces Vercel to treat the repo as a static site
+
+## Local Preview
+
+Open `index.html` directly in a browser, or run a tiny local server from this folder:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+python -m http.server 8000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:8000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment
 
-## Learn More
+The GitHub repository is connected to Vercel. Any push to `main` automatically redeploys the production site.
 
-To learn more about Next.js, take a look at the following resources:
+For a manual production deploy from this folder:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NODE_OPTIONS="--use-system-ca" vercel --prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+The `NODE_OPTIONS` setting is needed on this machine because the local Node/npm TLS setup needs access to the Windows system certificate store.

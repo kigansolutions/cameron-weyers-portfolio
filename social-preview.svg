@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Cameron Weyers portfolio preview">
+  <rect width="1200" height="630" fill="#F8F8F7"/>
+  <rect x="64" y="64" width="1072" height="502" rx="28" fill="#FFFFFF" stroke="rgba(0,0,0,0.12)"/>
+  <text x="116" y="166" fill="#9A9A95" font-family="Inter, Arial, sans-serif" font-size="24" letter-spacing="4">AI AUTOMATION SPECIALIST</text>
+  <text x="116" y="284" fill="#1A1A18" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="500">Cameron Weyers</text>
+  <text x="116" y="374" fill="#4A46C8" font-family="Inter, Arial, sans-serif" font-size="72" font-weight="500">AI systems builder</text>
+  <text x="116" y="462" fill="#5C5C58" font-family="Inter, Arial, sans-serif" font-size="32">Agentic workflows, business automation, and AI-assisted software.</text>
+  <g transform="translate(944 124)">
+    <rect width="128" height="128" rx="24" fill="#1A1A18"/>
+    <path d="M36 40c7.2-8 19.6-8.8 28.2-1.6l-8 9.4c-3.8-3-9-2.8-12.4.8-5.4 5.8-5.2 22.6.4 28.2 3.6 3.6 9 3.6 12.6.2l8 9.2c-8.6 7.8-21.6 7.4-29.2-.8-10.2-10.6-10-34.4.4-45.4Z" fill="#FFFFFF"/>
+    <path d="M66 36h12.2l8 32.2L95 36h13l-15.8 56h-11.2l-8.8-31.6L63.6 92H52.4l-3-10.6L60 72.8l2.2 9L70.6 48 66 36Z" fill="#8F8BFF"/>
+  </g>
+</svg>
