@@ -1,754 +1,501 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cameron Weyers | AI Automation Specialist</title>
-  <meta name="description" content="Cameron Weyers builds AI systems: agentic workflows, business automation, and AI-assisted software using Claude Code, MCP, n8n, and local LLMs." />
-  <link rel="canonical" href="https://cameron-weyers-portfolio.vercel.app/" />
-  <meta name="robots" content="index, follow" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cameron Weyers — AI Systems Builder</title>
+<meta name="description" content="Cameron Weyers, Kigan Solutions — agentic AI systems, workflow automation, and business software, built from the operating side. Owner-operator, remote from Bredasdorp, South Africa.">
+<meta property="og:title" content="Cameron Weyers — AI Systems Builder">
+<meta property="og:description" content="Systems that run themselves, built by someone who's run everything else.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --paper:#FBF8F2;
+  --paper-2:#F3EEE4;
+  --ink:#191C1B;
+  --ink-2:#434946;
+  --ink-3:#767D79;
+  --ink-4:#A8AEA9;
+  --green:#1E5C41;
+  --green-deep:#154732;
+  --green-tint:#E7EFE9;
+  --sage:#9CC3AE;
+  --rule:rgba(25,28,27,0.14);
+  --rule-soft:rgba(25,28,27,0.07);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,-apple-system,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --max:1024px;
+  --gut:clamp(1.25rem,5vw,3rem);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);background:var(--paper);color:var(--ink);
+  font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--green);color:var(--paper)}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut)}
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Cameron Weyers | AI Automation Specialist" />
-  <meta property="og:description" content="Agentic workflows, business automation, and AI-assisted software for real operational problems." />
-  <meta property="og:url" content="https://cameron-weyers-portfolio.vercel.app/" />
-  <meta property="og:site_name" content="Cameron Weyers Portfolio" />
-  <meta property="og:image" content="https://cameron-weyers-portfolio.vercel.app/social-preview.svg" />
+/* ---------- labels & type utilities ---------- */
+.label{font-family:var(--mono);font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--ink-3)}
+.label.green{color:var(--green)}
+.mono{font-family:var(--mono)}
 
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Cameron Weyers | AI Automation Specialist" />
-  <meta name="twitter:description" content="Agentic workflows, business automation, and AI-assisted software for real operational problems." />
-  <meta name="twitter:image" content="https://cameron-weyers-portfolio.vercel.app/social-preview.svg" />
+/* ---------- nav ---------- */
+.nav{position:sticky;top:0;z-index:100;background:rgba(251,248,242,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:0.95rem;padding-bottom:0.95rem}
+.nav-name{font-family:var(--serif);font-size:1.02rem;font-weight:600;letter-spacing:0.01em}
+.nav-name span{color:var(--green)}
+.nav-links{display:flex;gap:1.75rem;align-items:center}
+.nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);transition:color .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--green)}
+.nav-mail{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--paper)!important;background:var(--ink);padding:0.5rem 1rem;border-radius:2px;transition:background .15s}
+.nav-mail:hover{background:var(--green)}
+@media(max-width:780px){.nav-links a:not(.nav-mail){display:none}}
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+/* ---------- hero ---------- */
+.hero{padding:clamp(4rem,10vw,7.5rem) 0 clamp(3rem,7vw,5rem);border-bottom:1px solid var(--rule)}
+.hero-kicker{display:flex;align-items:center;gap:0.75rem;margin-bottom:2rem}
+.hero-kicker::before{content:"";display:block;width:2.25rem;height:1px;background:var(--green)}
+.hero h1{
+  font-family:var(--serif);font-weight:500;
+  font-size:clamp(2.35rem,6vw,4.35rem);
+  line-height:1.06;letter-spacing:-0.015em;
+  max-width:19ch;margin-bottom:1.9rem;
+}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--green)}
+.hero-lede{font-size:clamp(1rem,1.6vw,1.13rem);font-weight:300;line-height:1.75;color:var(--ink-2);max-width:56ch;margin-bottom:2.4rem}
+.hero-lede strong{font-weight:500;color:var(--ink)}
+.hero-row{display:flex;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:2.6rem}
+.btn{display:inline-block;font-family:var(--mono);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.85rem 1.55rem;border-radius:2px;border:1px solid var(--ink);transition:all .15s;cursor:pointer}
+.btn-fill{background:var(--ink);color:var(--paper)}
+.btn-fill:hover{background:var(--green);border-color:var(--green)}
+.btn-line{color:var(--ink)}
+.btn-line:hover{background:var(--ink);color:var(--paper)}
+.hero-meta{display:flex;gap:2rem;flex-wrap:wrap;font-family:var(--mono);font-size:0.68rem;letter-spacing:0.05em;color:var(--ink-3)}
+.hero-meta b{color:var(--ink);font-weight:500}
+.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:0.45rem;vertical-align:1px;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.25}}
 
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+/* ---------- facts strip ---------- */
+.facts{border-bottom:1px solid var(--rule);background:var(--paper-2)}
+.facts-in{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.fact{padding:1.6rem 1.5rem 1.6rem 0;border-right:1px solid var(--rule)}
+.fact:last-child{border-right:none}
+.fact+.fact{padding-left:1.5rem}
+.fact-n{font-family:var(--serif);font-size:1.7rem;font-weight:500;line-height:1.1;color:var(--ink)}
+.fact-n span{color:var(--green)}
+.fact-l{font-size:0.74rem;color:var(--ink-3);letter-spacing:0.04em;margin-top:0.3rem;line-height:1.45}
+@media(max-width:720px){.facts-in{grid-template-columns:1fr 1fr}.fact{padding:1.2rem 1rem 1.2rem 0}.fact:nth-child(2){border-right:none}.fact:nth-child(-n+2){border-bottom:1px solid var(--rule)}.fact:nth-child(3){padding-left:0}.fact:nth-child(even){padding-left:1rem}}
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Cameron Weyers",
-    "url": "https://cameron-weyers-portfolio.vercel.app/",
-    "email": "mailto:cameronweyers@gmail.com",
-    "jobTitle": "AI Automation Specialist",
-    "address": {
-      "@type": "PostalAddress",
-      "addressRegion": "Western Cape",
-      "addressCountry": "ZA"
-    },
-    "sameAs": [
-      "https://linkedin.com/in/cameron-weyers-132a074b",
-      "https://github.com/Koslovski79"
-    ],
-    "knowsAbout": [
-      "AI automation",
-      "Agentic workflows",
-      "MCP architecture",
-      "n8n",
-      "Local LLMs",
-      "Python",
-      "Django"
-    ]
-  }
-  </script>
+/* ---------- section scaffolding ---------- */
+section.block{padding:clamp(3.75rem,8vw,6rem) 0;border-bottom:1px solid var(--rule)}
+.block-head{margin-bottom:clamp(2.25rem,5vw,3.25rem);max-width:60ch}
+.block-head .label{display:block;margin-bottom:0.9rem}
+.block-head h2{font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.12;letter-spacing:-0.01em}
+.block-head h2 em{font-style:italic;font-weight:400;color:var(--green)}
+.block-head p{margin-top:1.1rem;font-weight:300;color:var(--ink-2);line-height:1.7;font-size:0.97rem}
 
-  <style>
-    /* ─── RESET ─────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ---------- thesis band ---------- */
+.thesis{background:var(--ink);color:var(--paper);border-bottom:none}
+.thesis-in{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.75rem,5vw,3.5rem);align-items:start;padding-top:clamp(3rem,6vw,4.5rem);padding-bottom:clamp(3rem,6vw,4.5rem)}
+.thesis-mark{font-family:var(--serif);font-style:italic;font-size:clamp(3.4rem,7vw,5rem);line-height:0.8;color:var(--sage)}
+.thesis-txt{font-family:var(--serif);font-weight:400;font-size:clamp(1.2rem,2.4vw,1.6rem);line-height:1.5;max-width:56ch}
+.thesis-txt b{font-weight:500;color:#fff}
+.thesis-txt em{font-style:italic;color:var(--sage)}
+.thesis-sig{margin-top:1.4rem;font-family:var(--mono);font-size:0.66rem;letter-spacing:0.16em;text-transform:uppercase;color:rgba(251,248,242,0.45)}
+@media(max-width:640px){.thesis-in{grid-template-columns:1fr;gap:1rem}}
 
-    /* ─── TOKENS ─────────────────────────────────────────────── */
-    :root {
-      --accent:        #4A46C8;
-      --accent-hover:  #3D39B0;
-      --accent-light:  #EEEDFE;
-      --accent-dark:   #3C3489;
+/* ---------- what I build ---------- */
+.builds{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule)}
+.build{display:grid;grid-template-columns:3.25rem 1fr;gap:clamp(1rem,3vw,2rem);padding:2rem 0;border-bottom:1px solid var(--rule)}
+.build-num{font-family:var(--serif);font-style:italic;font-size:1.35rem;color:var(--ink-4);padding-top:0.15rem}
+.build h3{font-family:var(--serif);font-weight:600;font-size:1.28rem;margin-bottom:0.55rem;letter-spacing:-0.005em}
+.build p{font-weight:300;color:var(--ink-2);line-height:1.7;font-size:0.95rem;max-width:62ch;margin-bottom:0.85rem}
+.build p b{font-weight:500;color:var(--ink)}
+.build-tools{font-family:var(--mono);font-size:0.66rem;letter-spacing:0.06em;color:var(--green)}
+@media(max-width:560px){.build{grid-template-columns:1fr;gap:0.4rem}}
 
-      --bg:            #ffffff;
-      --bg-secondary:  #F8F8F7;
-      --text-primary:  #1A1A18;
-      --text-secondary:#5C5C58;
-      --text-tertiary: #9A9A95;
-      --border:        rgba(0,0,0,0.10);
-      --border-mid:    rgba(0,0,0,0.18);
+/* ---------- case study ---------- */
+.case{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:start}
+.case-lead{font-family:var(--serif);font-size:1.28rem;line-height:1.5;font-weight:400;margin-bottom:1.3rem}
+.case-lead em{font-style:italic;color:var(--green)}
+.case p{font-weight:300;color:var(--ink-2);line-height:1.75;font-size:0.95rem;margin-bottom:1.1rem}
+.case p b{font-weight:500;color:var(--ink)}
+.case-meta{display:flex;flex-wrap:wrap;gap:0.55rem;margin-top:1.5rem}
+.pill{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.06em;padding:0.32rem 0.7rem;border:1px solid var(--rule);border-radius:99px;color:var(--ink-2);background:var(--paper)}
+.pill.green{border-color:var(--green);color:var(--green);background:var(--green-tint)}
+.decisions{border:1px solid var(--rule);background:var(--paper-2);padding:clamp(1.4rem,3vw,2rem);border-radius:3px}
+.decisions>.label{display:block;margin-bottom:1.4rem;color:var(--green)}
+.dec{padding:1.05rem 0;border-top:1px solid var(--rule-soft)}
+.dec:first-of-type{border-top:none;padding-top:0}
+.dec:last-of-type{padding-bottom:0}
+.dec-q{font-family:var(--serif);font-weight:600;font-size:0.98rem;margin-bottom:0.35rem}
+.dec-a{font-size:0.87rem;font-weight:300;line-height:1.65;color:var(--ink-2)}
+.dec-a b{font-weight:500;color:var(--ink)}
+@media(max-width:820px){.case{grid-template-columns:1fr}}
 
-      --font: 'Inter', system-ui, -apple-system, sans-serif;
-      --radius-sm: 6px;
-      --radius-md: 10px;
-      --radius-lg: 14px;
-    }
+/* ---------- other work ---------- */
+.works{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.work{border:1px solid var(--rule);border-radius:3px;padding:1.5rem 1.5rem 1.35rem;background:var(--paper);transition:border-color .15s,transform .15s;display:flex;flex-direction:column}
+.work:hover{border-color:var(--green)}
+.work-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:0.7rem}
+.work h3{font-family:var(--serif);font-weight:600;font-size:1.12rem}
+.status{font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;padding:0.22rem 0.6rem;border-radius:99px;white-space:nowrap}
+.status.live{color:var(--green);background:var(--green-tint);border:1px solid rgba(30,92,65,0.25)}
+.work p{font-size:0.87rem;font-weight:300;line-height:1.65;color:var(--ink-2);margin-bottom:1rem;flex:1}
+.work-tools{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.05em;color:var(--ink-3)}
+@media(max-width:680px){.works{grid-template-columns:1fr}}
 
-    /* ─── BASE ───────────────────────────────────────────────── */
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text-primary);
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+/* ---------- stack ---------- */
+.stack{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+.stack-col{border:1px solid var(--rule);border-radius:3px;padding:clamp(1.4rem,3vw,1.9rem);background:var(--paper)}
+.stack-col.learning{background:var(--paper-2);border-style:dashed}
+.stack-col-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:0.85rem;border-bottom:1px solid var(--rule);margin-bottom:1.15rem}
+.stack-col-head h3{font-family:var(--serif);font-weight:600;font-size:1.12rem}
+.srow{display:grid;grid-template-columns:7.25rem 1fr;gap:0.85rem;padding:0.42rem 0;align-items:baseline}
+.srow .k{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3)}
+.srow .v{font-size:0.9rem;line-height:1.55}
+.srow .v i{font-style:normal;color:var(--ink-4);margin:0 0.35rem}
+.stack-note{margin-top:1.25rem;padding-top:1.1rem;border-top:1px solid var(--rule-soft);font-size:0.85rem;font-weight:300;line-height:1.7;color:var(--ink-2)}
+.stack-note b{font-weight:500;color:var(--ink)}
+@media(max-width:760px){.stack{grid-template-columns:1fr}.srow{grid-template-columns:1fr;gap:0.1rem}}
 
-    /* ─── LAYOUT ─────────────────────────────────────────────── */
-    .site {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
+/* ---------- arc ---------- */
+.arc{border-top:1px solid var(--rule)}
+.arc-row{display:grid;grid-template-columns:8rem 1fr;gap:clamp(1rem,3vw,2.25rem);padding:1.35rem 0;border-bottom:1px solid var(--rule)}
+.arc-year{font-family:var(--mono);font-size:0.72rem;letter-spacing:0.04em;color:var(--green);font-weight:500;padding-top:0.25rem}
+.arc-role{font-family:var(--serif);font-weight:600;font-size:1.08rem}
+.arc-org{font-size:0.85rem;color:var(--ink-3);font-weight:300;margin-top:0.1rem}
+.arc-note{font-size:0.87rem;font-weight:300;color:var(--ink-2);line-height:1.65;margin-top:0.45rem;max-width:64ch}
+.arc-note b{font-weight:500;color:var(--ink)}
+@media(max-width:560px){.arc-row{grid-template-columns:1fr;gap:0.25rem}}
 
-    /* ─── NAV ────────────────────────────────────────────────── */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1.5rem 0;
-      border-bottom: 0.5px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      z-index: 100;
-    }
+/* ---------- cta ---------- */
+.cta{background:var(--green-deep);color:var(--paper);border-bottom:none}
+.cta-in{padding-top:clamp(4rem,8vw,6rem);padding-bottom:clamp(4rem,8vw,6rem)}
+.cta .label{color:var(--sage);display:block;margin-bottom:1.25rem}
+.cta h2{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.6vw,3.3rem);line-height:1.08;letter-spacing:-0.01em;max-width:17ch;margin-bottom:1.4rem}
+.cta h2 em{font-style:italic;font-weight:400;color:var(--sage)}
+.cta-sub{font-weight:300;font-size:1.02rem;line-height:1.75;color:rgba(251,248,242,0.75);max-width:54ch;margin-bottom:2.4rem}
+.cta-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;margin-bottom:1.6rem}
+.cta .btn{border-color:var(--paper)}
+.cta .btn-fill{background:var(--paper);color:var(--green-deep)}
+.cta .btn-fill:hover{background:var(--sage);border-color:var(--sage);color:var(--ink)}
+.cta .btn-line{color:var(--paper);border-color:rgba(251,248,242,0.4)}
+.cta .btn-line:hover{background:var(--paper);color:var(--green-deep);border-color:var(--paper)}
+.cta-line{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.06em;color:rgba(251,248,242,0.45)}
+.cta-line a{border-bottom:1px solid rgba(251,248,242,0.3);transition:color .15s}
+.cta-line a:hover{color:var(--sage)}
 
-    .nav-logo {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: -0.3px;
-      color: var(--text-primary);
-      text-decoration: none;
-    }
+/* ---------- footer ---------- */
+footer{padding:1.9rem 0;background:var(--paper)}
+.foot-in{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.foot-c{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.05em;color:var(--ink-3)}
+.foot-l{display:flex;gap:1.4rem}
+.foot-l a{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-3);transition:color .15s}
+.foot-l a:hover{color:var(--green)}
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .nav-links a {
-      font-size: 13px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .nav-links a:hover { color: var(--text-primary); }
-
-    /* ─── SECTIONS ───────────────────────────────────────────── */
-    .section {
-      padding: 5rem 0;
-      border-top: 0.5px solid var(--border);
-    }
-
-    .section-label {
-      font-size: 11px;
-      letter-spacing: 0.10em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 2.5rem;
-    }
-
-    /* ─── HERO ───────────────────────────────────────────────── */
-    .hero {
-      padding: 7rem 0 6rem;
-    }
-
-    .hero-eyebrow {
-      font-size: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-headline {
-      font-size: clamp(2.8rem, 7vw, 4.2rem);
-      font-weight: 500;
-      line-height: 1.06;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-headline .accent { color: var(--accent); }
-
-    .hero-sub {
-      font-size: 17px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      max-width: 520px;
-      margin-bottom: 2rem;
-    }
-
-    .hero-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-stack span {
-      font-size: 11px;
-      color: var(--text-secondary);
-      background: var(--bg-secondary);
-      border: 0.5px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      letter-spacing: 0.02em;
-    }
-
-    .btn-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      padding: 11px 24px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      font-family: var(--font);
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.15s;
-    }
-
-    .btn-primary:hover { background: var(--accent-hover); }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-primary);
-      border: 0.5px solid var(--border-mid);
-      padding: 11px 24px;
-      border-radius: var(--radius-md);
-      font-size: 14px;
-      cursor: pointer;
-      font-family: var(--font);
-      text-decoration: none;
-      display: inline-block;
-      transition: background 0.15s;
-    }
-
-    .btn-outline:hover { background: var(--bg-secondary); }
-
-    /* ─── WHAT I DO ──────────────────────────────────────────── */
-    .do-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 0;
-      background: var(--border);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-    }
-
-    .do-card {
-      background: var(--bg);
-      padding: 1.75rem 1.5rem;
-    }
-
-    .do-card-title {
-      font-size: 14px;
-      font-weight: 500;
-      margin-bottom: 1rem;
-    }
-
-    .do-tag {
-      display: inline-block;
-      font-size: 11px;
-      color: var(--text-secondary);
-      background: var(--bg-secondary);
-      border: 0.5px solid var(--border);
-      border-radius: 3px;
-      padding: 3px 8px;
-      margin: 2px 1px;
-    }
-
-    /* ─── SYSTEMS ────────────────────────────────────────────── */
-    .systems-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .sys-card {
-      background: var(--bg);
-      border: 0.5px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.75rem;
-      transition: border-color 0.15s;
-    }
-
-    .sys-card:hover { border-color: var(--border-mid); }
-
-    .sys-card.featured {
-      border-color: var(--accent);
-    }
-
-    .sys-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
-    }
-
-    .sys-card-title {
-      font-size: 15px;
-      font-weight: 500;
-    }
-
-    .sys-badge {
-      font-size: 10px;
-      background: var(--accent-light);
-      color: var(--accent-dark);
-      padding: 3px 9px;
-      border-radius: 3px;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
-    .sys-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 1.25rem;
-    }
-
-    .sys-metrics {
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .metric-num {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--text-primary);
-      line-height: 1;
-    }
-
-    .metric-label {
-      font-size: 10px;
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-top: 3px;
-    }
-
-    .sys-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-    }
-
-    .sys-card-sm .sys-card-title { font-size: 14px; }
-    .sys-card-sm .sys-desc { font-size: 12px; margin-bottom: 1rem; }
-    .sys-card-sm .metric-num { font-size: 16px; }
-    .sys-card-sm .sys-metrics { gap: 1.25rem; }
-
-    /* ─── ABOUT ──────────────────────────────────────────────── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4rem;
-      align-items: start;
-    }
-
-    .about-text {
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--text-secondary);
-    }
-
-    .about-text p { margin-bottom: 1.25rem; }
-    .about-text p:last-child { margin-bottom: 0; }
-    .about-text strong { color: var(--text-primary); font-weight: 500; }
-
-    .skills-group { margin-bottom: 1.5rem; }
-
-    .skills-group-label {
-      font-size: 11px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text-tertiary);
-      margin-bottom: 0.6rem;
-    }
-
-    .skill-tag {
-      display: inline-block;
-      font-size: 12px;
-      color: var(--text-secondary);
-      background: var(--bg-secondary);
-      border: 0.5px solid var(--border);
-      border-radius: 4px;
-      padding: 4px 10px;
-      margin: 2px 2px;
-    }
-
-    /* ─── CONTACT ────────────────────────────────────────────── */
-    .contact-sub {
-      font-size: 15px;
-      color: var(--text-secondary);
-      line-height: 1.65;
-      margin-bottom: 1.75rem;
-      max-width: 520px;
-    }
-
-    .contact-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 14px;
-      color: var(--text-secondary);
-      text-decoration: none;
-      border: 0.5px solid var(--border-mid);
-      border-radius: var(--radius-md);
-      padding: 10px 18px;
-      transition: all 0.15s;
-    }
-
-    .contact-link:hover {
-      border-color: var(--border-mid);
-      color: var(--text-primary);
-      background: var(--bg-secondary);
-    }
-
-    .contact-link svg {
-      width: 16px;
-      height: 16px;
-      flex-shrink: 0;
-    }
-
-    /* ─── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      border-top: 0.5px solid var(--border);
-      padding: 2rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 1rem;
-    }
-
-    footer span { font-size: 12px; color: var(--text-tertiary); }
-
-    /* ─── RESPONSIVE ─────────────────────────────────────────── */
-    @media (max-width: 680px) {
-      .do-grid { grid-template-columns: 1fr; }
-      .sys-row { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero { padding: 4rem 0 3.5rem; }
-      .section { padding: 3.5rem 0; }
-      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
-    }
-  </style>
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.rv.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .dot{animation:none}
+  html{scroll-behavior:auto}
+}
+</style>
 </head>
 <body>
 
-<div class="site">
-
-  <!-- ── NAV ──────────────────────────────────────────────────── -->
-  <nav>
-    <a href="#" class="nav-logo">Cameron Weyers</a>
-    <ul class="nav-links">
-      <li><a href="#systems">Systems</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- ── HERO ─────────────────────────────────────────────────── -->
-  <section class="hero">
-    <p class="hero-eyebrow">AI Automation · Agentic Systems · Business Software</p>
-    <h1 class="hero-headline">
-      I build<br>
-      <span class="accent">AI systems.</span>
-    </h1>
-    <p class="hero-sub">
-      Agentic workflows. Business automation. AI-assisted software.
-      Turning real operational problems into working systems using modern AI tooling.
-    </p>
-    <div class="hero-stack">
-      <span>Claude Code</span>
-      <span>MCP</span>
-      <span>n8n</span>
-      <span>Local LLMs</span>
-      <span>LangGraph</span>
-      <span>OpenRouter</span>
-      <span>Python</span>
-      <span>Django</span>
+<nav class="nav" aria-label="Primary">
+  <div class="wrap nav-in">
+    <a class="nav-name" href="#top">Cameron Weyers<span>.</span></a>
+    <div class="nav-links">
+      <a href="#build">What I build</a>
+      <a href="#hermes">Hermes</a>
+      <a href="#stack">Stack</a>
+      <a href="#arc">The arc</a>
+      <a class="nav-mail" href="mailto:cameronweyers@gmail.com">Get in touch</a>
     </div>
-    <div class="btn-row">
-      <a href="mailto:cameronweyers@gmail.com" class="btn-primary">Email Cameron</a>
-      <a href="#systems" class="btn-outline">View Systems</a>
-      <a href="cameron-weyers-cv.pdf" class="btn-outline" download>Download CV</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-kicker"><span class="label green">Kigan Solutions · AI Systems Builder · Bredasdorp, South Africa</span></div>
+    <h1>Systems that run themselves, built by someone who's <em>run everything else.</em></h1>
+    <p class="hero-lede">Rosette-level kitchens in the UK. Nine years owning a restaurant on thin margins. A background in audit and accounting. I came to AI from the operating side — so I build for the Friday-night failure and <strong>the number that has to move</strong>, not for the demo.</p>
+    <div class="hero-row">
+      <a class="btn btn-fill" href="mailto:cameronweyers@gmail.com">Start a conversation</a>
+      <a class="btn btn-line" href="#hermes">See how I work</a>
     </div>
-  </section>
-
-  <!-- ── WHAT I DO ─────────────────────────────────────────────── -->
-  <section class="section" id="work">
-    <p class="section-label">What I do</p>
-    <div class="do-grid">
-      <div class="do-card">
-        <p class="do-card-title">AI Automation</p>
-        <div>
-          <span class="do-tag">Agentic workflows</span>
-          <span class="do-tag">n8n</span>
-          <span class="do-tag">Make</span>
-          <span class="do-tag">REST APIs</span>
-          <span class="do-tag">Webhooks</span>
-          <span class="do-tag">GraphQL</span>
-        </div>
-      </div>
-      <div class="do-card">
-        <p class="do-card-title">AI Systems</p>
-        <div>
-          <span class="do-tag">MCP architecture</span>
-          <span class="do-tag">Local LLMs</span>
-          <span class="do-tag">Prompt engineering</span>
-          <span class="do-tag">Vector memory</span>
-          <span class="do-tag">AI agents</span>
-        </div>
-      </div>
-      <div class="do-card">
-        <p class="do-card-title">Business Software</p>
-        <div>
-          <span class="do-tag">Payroll systems</span>
-          <span class="do-tag">POS platforms</span>
-          <span class="do-tag">Dashboards</span>
-          <span class="do-tag">Operations</span>
-          <span class="do-tag">Reporting</span>
-        </div>
-      </div>
+    <div class="hero-meta">
+      <span><span class="dot"></span><b>Open</b> — remote contracts</span>
+      <span><b>Hermes</b> — live in production</span>
+      <span><b>github.com/</b>Koslovski79</span>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- ── SYSTEMS I'VE BUILT ────────────────────────────────────── -->
-  <section class="section" id="systems">
-    <p class="section-label">Systems I've built</p>
-    <div class="systems-grid">
-
-      <!-- Hermes — flagship -->
-      <div class="sys-card featured">
-        <div class="sys-card-header">
-          <p class="sys-card-title">Hermes — AI Agent Platform</p>
-          <span class="sys-badge">Flagship</span>
-        </div>
-        <p class="sys-desc">
-          A self-hosted, production-grade agentic ecosystem running on Ubuntu 24 LTS via Tailscale.
-          Built with Ollama for local LLM inference, Chroma/Qdrant for persistent vector memory,
-          LangGraph and CrewAI for orchestration, and MCP-based connectors for Gmail, Calendar,
-          and tool access. Outputs daily briefings, Telegram nudges, voice via Whisper/TTS,
-          and a Streamlit dashboard.
-        </p>
-        <div class="sys-metrics">
-          <div class="metric">
-            <div class="metric-num">6</div>
-            <div class="metric-label">MCP Servers</div>
-          </div>
-          <div class="metric">
-            <div class="metric-num">40+</div>
-            <div class="metric-label">Tools</div>
-          </div>
-          <div class="metric">
-            <div class="metric-num">28+</div>
-            <div class="metric-label">Skills</div>
-          </div>
-          <div class="metric">
-            <div class="metric-num">∞</div>
-            <div class="metric-label">Persistent memory</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- OpenClaw + n8n -->
-      <div class="sys-row">
-        <div class="sys-card sys-card-sm">
-          <div class="sys-card-header">
-            <p class="sys-card-title">OpenClaw — Local Agent Runtime</p>
-          </div>
-          <p class="sys-desc">
-            Terminal-based agentic environment using OpenRouter for prompt-driven script
-            execution and LLM benchmarking across providers.
-          </p>
-          <div class="sys-metrics">
-            <div class="metric">
-              <div class="metric-num">Local</div>
-              <div class="metric-label">Inference</div>
-            </div>
-            <div class="metric">
-              <div class="metric-num">Multi</div>
-              <div class="metric-label">LLM routing</div>
-            </div>
-          </div>
-        </div>
-        <div class="sys-card sys-card-sm">
-          <div class="sys-card-header">
-            <p class="sys-card-title">n8n Automation Pipelines</p>
-          </div>
-          <p class="sys-desc">
-            Self-hosted n8n workflows integrating local LLMs, external APIs, and recon pipelines.
-            Threat intel and data enrichment use cases.
-          </p>
-          <div class="sys-metrics">
-            <div class="metric">
-              <div class="metric-num">Self</div>
-              <div class="metric-label">Hosted</div>
-            </div>
-            <div class="metric">
-              <div class="metric-num">Local</div>
-              <div class="metric-label">LLMs</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Payroll + POS -->
-      <div class="sys-row">
-        <div class="sys-card sys-card-sm">
-          <div class="sys-card-header">
-            <p class="sys-card-title">Payroll Platform</p>
-          </div>
-          <p class="sys-desc">
-            SARS-compliant payroll and tax automation built in Python/Django with WhatsApp
-            integration for staff notifications and payslip delivery.
-          </p>
-          <div class="sys-metrics">
-            <div class="metric">
-              <div class="metric-num">7 100</div>
-              <div class="metric-label">Lines of code</div>
-            </div>
-            <div class="metric">
-              <div class="metric-num">9</div>
-              <div class="metric-label">Django apps</div>
-            </div>
-          </div>
-        </div>
-        <div class="sys-card sys-card-sm">
-          <div class="sys-card-header">
-            <p class="sys-card-title">POS Platform</p>
-          </div>
-          <p class="sys-desc">
-            Custom mobile point-of-sale system for hospitality operations — reservations,
-            inventory, table management, and reporting.
-          </p>
-          <div class="sys-metrics">
-            <div class="metric">
-              <div class="metric-num">3 600</div>
-              <div class="metric-label">Lines of code</div>
-            </div>
-            <div class="metric">
-              <div class="metric-num">46</div>
-              <div class="metric-label">Models</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ── ABOUT ─────────────────────────────────────────────────── -->
-  <section class="section" id="about">
-    <p class="section-label">About</p>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I'm <strong>Cameron Weyers</strong> — a business operator turned AI systems builder based in the Western Cape, South Africa.</p>
-        <p>My background spans business ownership and financial accounting. Over the past two years, I've been building operational software using AI-assisted development — moving from spreadsheet automation into full agentic systems.</p>
-        <p>My current focus is agentic AI: MCP architectures, workflow orchestration, local LLM inference, and prompt-driven development. Everything I build runs in production, not just in demos.</p>
-        <p>Available for remote and contractor engagements.</p>
-      </div>
-      <div class="skills-col">
-        <div class="skills-group">
-          <p class="skills-group-label">AI &amp; Agents</p>
-          <span class="skill-tag">Claude Code</span>
-          <span class="skill-tag">MCP</span>
-          <span class="skill-tag">LangGraph</span>
-          <span class="skill-tag">CrewAI</span>
-          <span class="skill-tag">Ollama</span>
-          <span class="skill-tag">OpenRouter</span>
-          <span class="skill-tag">Prompt engineering</span>
-        </div>
-        <div class="skills-group">
-          <p class="skills-group-label">Automation</p>
-          <span class="skill-tag">n8n</span>
-          <span class="skill-tag">Make</span>
-          <span class="skill-tag">REST APIs</span>
-          <span class="skill-tag">GraphQL</span>
-          <span class="skill-tag">Webhooks</span>
-        </div>
-        <div class="skills-group">
-          <p class="skills-group-label">Development</p>
-          <span class="skill-tag">Python</span>
-          <span class="skill-tag">Django</span>
-          <span class="skill-tag">PostgreSQL</span>
-          <span class="skill-tag">Linux</span>
-          <span class="skill-tag">Tailscale</span>
-        </div>
-        <div class="skills-group">
-          <p class="skills-group-label">Memory &amp; Data</p>
-          <span class="skill-tag">Chroma</span>
-          <span class="skill-tag">Qdrant</span>
-          <span class="skill-tag">SQLite</span>
-          <span class="skill-tag">Vector embeddings</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ────────────────────────────────────────────────── -->
-  <section class="section" id="contact">
-    <p class="section-label">Contact</p>
-    <p class="contact-sub">
-      Open to remote and contractor roles in AI automation, agentic development,
-      and workflow engineering. Reach out by email, LinkedIn, or GitHub.
-    </p>
-    <div class="contact-row">
-      <a href="https://linkedin.com/in/cameron-weyers-132a074b" class="contact-link" target="_blank" rel="noopener">
-        <!-- LinkedIn icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-          <rect x="2" y="9" width="4" height="12"/>
-          <circle cx="4" cy="4" r="2"/>
-        </svg>
-        LinkedIn
-      </a>
-      <a href="https://github.com/Koslovski79" class="contact-link" target="_blank" rel="noopener">
-        <!-- GitHub icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-        </svg>
-        GitHub
-      </a>
-      <a href="mailto:cameronweyers@gmail.com" class="contact-link">
-        <!-- Email icon -->
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-          <polyline points="22,6 12,13 2,6"/>
-        </svg>
-        Email
-      </a>
-    </div>
-  </section>
-
-  <!-- ── FOOTER ─────────────────────────────────────────────────── -->
-  <footer>
-    <span>Cameron Weyers &middot; <a href="https://cameron-weyers-portfolio.vercel.app/" style="color:inherit;text-decoration:none;">cameron-weyers-portfolio.vercel.app</a></span>
-    <span>Built with intent. Not a template.</span>
-  </footer>
-
+<div class="facts">
+  <div class="wrap facts-in">
+    <div class="fact"><div class="fact-n">9 <span>yrs</span></div><div class="fact-l">Owner-operator, Seagulls Pub &amp; Grill</div></div>
+    <div class="fact"><div class="fact-n">8 <span>yrs</span></div><div class="fact-l">UK kitchens — systems under pressure</div></div>
+    <div class="fact"><div class="fact-n">6 <span>MCP</span></div><div class="fact-l">servers, 40+ tools, 28+ skills live on Hermes</div></div>
+    <div class="fact"><div class="fact-n">0</div><div class="fact-l">Hand-offs — one operator owns the result</div></div>
+  </div>
 </div>
 
+<section class="thesis rv" aria-label="Thesis">
+  <div class="wrap thesis-in">
+    <div class="thesis-mark">”</div>
+    <div>
+      <p class="thesis-txt">The rare thing in AI right now isn't another framework. It's <b>business judgement wired to technical capability</b>. I've spent twenty years accountable for outcomes — the systems I build <em>inherit that accountability.</em></p>
+      <div class="thesis-sig">— The whole pitch, in one paragraph</div>
+    </div>
+  </div>
+</section>
+
+<section class="block rv" id="build">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="label green">01 — What I build</span>
+      <h2>The work your team does every morning, <em>done before they arrive.</em></h2>
+    </div>
+    <div class="builds">
+      <div class="build">
+        <div class="build-num">i</div>
+        <div>
+          <h3>Agentic AI systems</h3>
+          <p>Self-hosted assistants that read your inbox, calendar, and data — then <b>act</b>. Private by design, running on your infrastructure, owned by you. Not a wrapper around someone else's API product.</p>
+          <div class="build-tools">LangGraph · CrewAI · MCP · Ollama · Chroma / Qdrant</div>
+        </div>
+      </div>
+      <div class="build">
+        <div class="build-num">ii</div>
+        <div>
+          <h3>Workflow automation</h3>
+          <p>Data moves without someone moving it. Alerts fire without someone watching. Reports appear without someone compiling them. Built to run <b>unattended — and to fail loudly</b> when something breaks.</p>
+          <div class="build-tools">n8n · Make · REST APIs · webhooks · Google Workspace</div>
+        </div>
+      </div>
+      <div class="build">
+        <div class="build-num">iii</div>
+        <div>
+          <h3>Business software</h3>
+          <p>POS, payroll, reporting — shaped to how your operation actually moves. My own restaurant runs on systems I built: <b>SARS-compliant payroll</b>, mobile ordering, live reporting. I'm my own harshest client.</p>
+          <div class="build-tools">Python · Django · PostgreSQL · Linux</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rv" id="hermes">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="label green">02 — Worked example</span>
+      <h2>Hermes, adapted — the assistant that briefs me <em>before I open the laptop.</em></h2>
+    </div>
+    <div class="case">
+      <div>
+        <p class="case-lead">Hermes started as Nous Research's open agent framework. I've adapted and tuned it into my own self-hosted platform — an Ubuntu VM, Tailscale-only, thinking with <em>local models.</em> First job: the morning briefing, on my desk by 06:00.</p>
+        <p>I didn't write the framework — <b>I made it mine</b>. Hundreds of hours of adaptation and fine-tuning, and it now does the heavy lifting in my day: six MCP servers, forty-plus tools, twenty-eight skills — briefings, Telegram nudges, voice via Whisper, a Streamlit dashboard. It expands every week, because it's infrastructure I live on, <b>not a portfolio piece</b>.</p>
+        <p>The adaptation isn't the point either. <b>The decisions underneath it are</b> — every choice on the right I can defend under questioning. And the hours spent inside someone else's agent architecture are exactly what's <b>compressing my ramp on Claude Code</b> now.</p>
+        <div class="case-meta">
+          <span class="pill green">Live · in production</span>
+          <span class="pill">Ollama — local LLM</span>
+          <span class="pill">Tailscale-only</span>
+          <span class="pill">LangGraph + CrewAI</span>
+          <span class="pill">Vector memory</span>
+          <span class="pill">MCP → Gmail / Calendar</span>
+        </div>
+      </div>
+      <div class="decisions">
+        <span class="label">Decisions I'd defend in an interview</span>
+        <div class="dec">
+          <div class="dec-q">Why local-first?</div>
+          <div class="dec-a"><b>Privacy and cost.</b> My inbox and calendar are the most sensitive data I own, and a daily 06:00 run on metered tokens punishes you. Local inference amortises to zero marginal cost.</div>
+        </div>
+        <div class="dec">
+          <div class="dec-q">Why Tailscale, not a public endpoint?</div>
+          <div class="dec-a"><b>Zero inbound surface.</b> A personal assistant doesn't need to be reachable from the internet. It needs to be reachable from me.</div>
+        </div>
+        <div class="dec">
+          <div class="dec-q">Why LangGraph for the briefing?</div>
+          <div class="dec-a"><b>Observability.</b> The flow is fixed and stateful — when it misfires at 06:00 I inspect each node's state instead of reconstructing agent chatter. CrewAI earns its place on looser, multi-role work.</div>
+        </div>
+        <div class="dec">
+          <div class="dec-q">Why a vector store at all?</div>
+          <div class="dec-a"><b>Retrieval over my own notes</b> is the difference between an assistant and a parrot. Without it the briefing knows today; with it, it knows what I've been working on for weeks.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rv" id="work">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="label green">03 — Also shipped</span>
+      <h2>Running systems, not case studies <em>invented for a portfolio.</em></h2>
+    </div>
+    <div class="works">
+      <div class="work">
+        <div class="work-top"><h3>Payroll platform</h3><span class="status live">Live</span></div>
+        <p>SARS-compliant payroll and tax automation — PAYE, UIF, SDL — in Python/Django, with WhatsApp payslip delivery to staff. Runs the payroll at my own restaurant every month.</p>
+        <div class="work-tools">Python · Django · PostgreSQL · WhatsApp API</div>
+      </div>
+      <div class="work">
+        <div class="work-top"><h3>POS platform</h3><span class="status live">Live</span></div>
+        <p>Custom mobile point-of-sale for hospitality — reservations, inventory, table management, reporting. Designed for the way a real Friday service moves, not the way a demo does.</p>
+        <div class="work-tools">Django · PostgreSQL · 46 models in production</div>
+      </div>
+      <div class="work">
+        <div class="work-top"><h3>n8n automation pipelines</h3><span class="status live">Live</span></div>
+        <p>Self-hosted workflows wiring local LLMs into Gmail, Sheets, and external APIs — inbox summaries, AI categorisation, data enrichment. Manual daily admin, replaced by triggers.</p>
+        <div class="work-tools">n8n · Ollama · Google Workspace · webhooks</div>
+      </div>
+      <div class="work">
+        <div class="work-top"><h3>OpenClaw agent runtime</h3><span class="status live">Live</span></div>
+        <p>Terminal-based agentic environment using OpenRouter for prompt-driven script execution and LLM benchmarking across providers — the testbed behind the choices I make on client work.</p>
+        <div class="work-tools">OpenRouter · Python · multi-LLM routing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rv" id="stack">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="label green">04 — The stack</span>
+      <h2>What I can defend. What I'm <em>still earning.</em></h2>
+      <p>Most portfolios list every tool their owner has ever opened. The split below is a more useful signal than either column alone.</p>
+    </div>
+    <div class="stack">
+      <div class="stack-col">
+        <div class="stack-col-head"><h3>Defensible under questioning</h3><span class="label green">daily use</span></div>
+        <div class="srow"><span class="k">Agentic</span><span class="v">Hermes (Nous Research, adapted)<i>·</i>LangGraph<i>·</i>CrewAI<i>·</i>MCP</span></div>
+        <div class="srow"><span class="k">LLM runtime</span><span class="v">Ollama<i>·</i>OpenRouter</span></div>
+        <div class="srow"><span class="k">Automation</span><span class="v">n8n<i>·</i>Make<i>·</i>REST APIs<i>·</i>webhooks</span></div>
+        <div class="srow"><span class="k">Code</span><span class="v">Python<i>·</i>Django<i>·</i>PostgreSQL</span></div>
+        <div class="srow"><span class="k">Memory</span><span class="v">Chroma<i>·</i>Qdrant<i>·</i>vector embeddings</span></div>
+        <div class="srow"><span class="k">Infra</span><span class="v">Ubuntu 24 LTS<i>·</i>Tailscale<i>·</i>Runpod</span></div>
+        <div class="srow"><span class="k">Voice</span><span class="v">faster-whisper (offline)<i>·</i>TTS</span></div>
+      </div>
+      <div class="stack-col learning">
+        <div class="stack-col-head"><h3>Building, not claiming</h3><span class="label">in progress</span></div>
+        <div class="srow"><span class="k">Deepening</span><span class="v">Claude Code — ramping fast on the back of the Hermes hours</span></div>
+        <div class="srow"><span class="k">Exploring</span><span class="v">Manus<i>·</i>AntiGravity</span></div>
+        <div class="srow"><span class="k">Surface</span><span class="v">Docker<i>·</i>FastAPI<i>·</i>Celery</span></div>
+        <p class="stack-note"><b>Why this column exists.</b> Claimed depth gets found out in the first interview — or worse, mid-project. Everything on the left I can defend: the why, the tradeoff, when I'd choose differently. The right column is honestly labelled, and it moves left on a schedule. If you'd rather hire the person who lists everything, that's a useful filter for both of us.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block rv" id="arc">
+  <div class="wrap">
+    <div class="block-head">
+      <span class="label green">05 — The arc</span>
+      <h2>Systems thinking, earned <em>the long way.</em></h2>
+    </div>
+    <div class="arc">
+      <div class="arc-row">
+        <div class="arc-year">2024 — now</div>
+        <div>
+          <div class="arc-role">AI Systems Builder</div>
+          <div class="arc-org">Hermes · automation · payroll — everything in production</div>
+          <div class="arc-note">Self-taught, in public, on live systems. Two years from spreadsheet automation to a full agentic platform — <b>the fastest-compounding skill I've ever built.</b></div>
+        </div>
+      </div>
+      <div class="arc-row">
+        <div class="arc-year">2017 — now</div>
+        <div>
+          <div class="arc-role">Owner</div>
+          <div class="arc-org">Seagulls Pub &amp; Grill · Bredasdorp, South Africa</div>
+          <div class="arc-note">Nine years on thin margins. Every system I ship is filtered through <b>what it costs when it fails at 19:00 on a Friday.</b></div>
+        </div>
+      </div>
+      <div class="arc-row">
+        <div class="arc-year">2009 — 2017</div>
+        <div>
+          <div class="arc-role">Senior Sous Chef → Head Chef → Chef Patron</div>
+          <div class="arc-org">Stoke Place (3 AA Rosettes) · Macdonald Bear (2 AA Rosettes) · The Sun Inn — UK</div>
+          <div class="arc-note">Eight years of high-velocity systems under pressure: <b>zero tolerance for anything that doesn't work when it has to.</b></div>
+        </div>
+      </div>
+      <div class="arc-row">
+        <div class="arc-year">2004 — 2007</div>
+        <div>
+          <div class="arc-role">Audit &amp; Article Clerk</div>
+          <div class="arc-org">Luyt Proudfoot Hall &amp; Associates · South Africa</div>
+          <div class="arc-note">Where the habit started: <b>build to the number, not the demo.</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta rv" id="contact">
+  <div class="wrap cta-in">
+    <span class="label">06 — Start here</span>
+    <h2>Got a system that should <em>run itself?</em></h2>
+    <p class="cta-sub">If you're repeating the same manual work, stitching together tools that don't talk to each other, or trying to work out where AI actually fits your operation — that's the conversation. No deck, no sales call. A direct chat about whether I'm the right fit.</p>
+    <div class="cta-row">
+      <a class="btn btn-fill" href="mailto:cameronweyers@gmail.com">Email me</a>
+      <a class="btn btn-line" href="https://cameron-weyers-portfolio.vercel.app/cameron-weyers-cv.pdf">Download CV</a>
+      <a class="btn btn-line" href="https://linkedin.com/in/cameron-weyers-132a074b">LinkedIn ↗</a>
+      <a class="btn btn-line" href="https://github.com/Koslovski79">GitHub ↗</a>
+    </div>
+    <div class="cta-line"><a href="mailto:cameronweyers@gmail.com">cameronweyers@gmail.com</a> · Kigan Solutions · Bredasdorp, Western Cape · remote-ready · contractor preferred</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-in">
+    <div class="foot-c">© 2026 Cameron Weyers · Kigan Solutions — built with AI, owned entirely by me</div>
+    <div class="foot-l">
+      <a href="https://github.com/Koslovski79">GitHub</a>
+      <a href="https://linkedin.com/in/cameron-weyers-132a074b">LinkedIn</a>
+      <a href="mailto:cameronweyers@gmail.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Section reveal
+  var rvs = document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+    },{rootMargin:'0px 0px -8% 0px'});
+    rvs.forEach(function(el){ io.observe(el); });
+  } else {
+    rvs.forEach(function(el){ el.classList.add('on'); });
+  }
+  // Scroll-spy
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var secs = links.map(function(l){ return document.querySelector(l.getAttribute('href')); }).filter(Boolean);
+  if('IntersectionObserver' in window && secs.length){
+    var spy = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var id = '#'+e.target.id;
+          links.forEach(function(l){ l.classList.toggle('active', l.getAttribute('href')===id); });
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    secs.forEach(function(s){ spy.observe(s); });
+  }
+})();
+</script>
 </body>
 </html>
