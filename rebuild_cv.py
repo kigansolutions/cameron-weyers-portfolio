@@ -42,7 +42,7 @@ def write_line(text, x, size, color, font="helv"):
     global y
     page.insert_text((x, y + size - 1), text, fontname=font, fontsize=size, color=color)
 
-def header(text, size=11, space_before=16, space_after=8):
+def header(text, size=11, space_before=10, space_after=5):
     global y
     ensure_space(size + space_after + 30)
     y += space_before
@@ -71,7 +71,7 @@ def text_block(text, size=9.5, color=med, leading=12, space_after=5):
         y += leading
     y += space_after
 
-def bullet(text, size=9.5, color=med, leading=12, indent=14, space_after=3):
+def bullet(text, size=9.5, color=med, leading=12, indent=14, space_after=2):
     global y
     words = text.split()
     line = ""
@@ -103,14 +103,14 @@ def project(name, desc, bullets, tech):
     for b in bullets:
         bullet(b)
     write_line("Technologies: " + tech, left, 8.5, light)
-    y += 13
+    y += 12
 
 def skill_group(name, items):
     global y
     ensure_space(40)
     write_line(name, left, 9.5, dark)
     y += 12
-    text_block("  " + "  \u2022  ".join(items), size=9, color=med, leading=11, space_after=6)
+    text_block("  " + "  \u2022  ".join(items), size=9, color=med, leading=11, space_after=4)
 
 # ── NAME ──
 write_line("Cameron James Weyers", left, 18, dark)
@@ -138,25 +138,37 @@ for ln in lines:
 # ── SUMMARY ──
 header("SUMMARY")
 paragraphs = [
-    "AI Systems Builder and Automation Specialist with hands-on experience designing and deploying agentic AI systems, workflow automation, and business software — built from the operating side.",
-    "Experienced in building production-grade systems using prompt-driven development, local and cloud-hosted LLMs, workflow automation platforms, APIs, and custom orchestration frameworks. Background in audit and accounting, with nine years as a business owner-operator. Proven ability to rapidly prototype functional solutions, integrate multiple systems, and translate business requirements into working software.",
-    "Everything I build runs in production, not just in demos. Comfortable working independently, learning new technologies quickly, and building practical solutions in rapidly evolving AI-first environments."
+    "AI Systems Builder and founder of Kigan Agentic AI Solutions — designing and shipping custom AI agents that automate real business workflows, from content drafting to reporting to day-to-day operations. Built from the operating side, not the demo side.",
+    "Nine years as a business owner-operator, with a background in audit and accounting. Everything I build runs in production — I'm my own harshest client, and every system is judged by what it costs when it breaks, not how it looks in a slide."
 ]
 for p in paragraphs:
     text_block(p)
 
 # ── EXPERIENCE ──
 header("EXPERIENCE")
+write_line("Founder & AI Systems Builder", left, 10, dark)
+y += 12
+write_line("2024 \u2013 Present", left, 9, light)
+write_line("Kigan Agentic AI Solutions \u00b7 Remote", left + 120, 9, med)
+y += 13
+for b in [
+    "Design and build custom AI agents that automate content, research, and workflow tasks for clients — Claude Agent SDK, Trigger.dev, n8n, and direct API integrations.",
+    "Shipped a weekly LinkedIn content agent and a full research-to-send newsletter pipeline, both running unattended in production.",
+    "Adapted Nous Research's open agent framework into Hermes, a self-hosted platform running six MCP servers, 40+ tools, and daily automated briefings.",
+    "Self-taught, in public: two years from spreadsheet automation to a full agentic platform, every build shipped to production, not demoed."
+]:
+    bullet(b)
+y += 3
+
 write_line("Owner & Systems Architect", left, 10, dark)
 y += 12
-write_line("2017 \u2013 Present", left, 9, light)
-write_line("Seagulls Pub & Grill \u00b7 Bredasdorp, South Africa", left + 120, 9, med)
+write_line("2017 – Present", left, 9, light)
+write_line("Seagulls Pub & Grill · Bredasdorp, South Africa", left + 120, 9, med)
 y += 13
 for b in [
     "Built and deployed custom business applications, automation systems, and AI-assisted operational tools.",
-    "Designed SARS-compliant payroll automation and reporting systems.",
-    "Implemented AI tooling and workflow automation to improve operational efficiency.",
-    "Managed business operations, financial reporting, procurement, staffing, and compliance."
+    "Designed SARS-compliant payroll automation and reporting systems, still running production payroll monthly.",
+    "Managed business operations, financial reporting, procurement, staffing, and compliance for nine years on thin hospitality margins."
 ]:
     bullet(b)
 
@@ -164,39 +176,45 @@ for b in [
 header("PROJECTS")
 
 project(
-    "Hermes \u2014 AI Agent Platform (Adapted)",
-    "Adapted and tuned Nous Research's open agent framework into a self-hosted, production-grade agentic platform. Ubuntu VM, Tailscale-only, with local LLM inference via Ollama. Six MCP servers, 40+ tools, 28+ skills. Daily morning briefings, Telegram nudges, voice via Whisper, and a Streamlit dashboard. Infrastructure I live on, not a portfolio piece.",
+    "LinkedIn Drafting Agent",
+    "Weekly agent that researches live discussion, drafts a post in my voice using the Claude Agent SDK, and files it to ClickUp for review — unattended, every Monday. Built for Kigan.",
     [
-        "Built 28+ reusable AI skill modules with conditional activation and context-aware loading.",
-        "Developed 6 MCP servers exposing 40+ tools for browser automation, security tooling, API interaction, and workflow execution.",
-        "Implemented asynchronous agent delegation and context-compression pipelines for long-running workflows.",
-        "Built persistent memory architecture supporting vector search, knowledge retrieval, and session continuity.",
-        "Integrated Gmail, Calendar, and tool access via MCP connectors \u2014 private by design, running on own infrastructure."
+        "Sources live discussion via web search rather than relying on stale training data — Reddit blocks direct API access.",
+        "Drafts in a consistent voice using a detailed style system prompt, deduplicated against prior topics.",
+        "Hands off to a human review step via ClickUp — never auto-publishes."
     ],
-    "Python, MCP, Ollama, LangGraph, CrewAI, Chroma/Qdrant, Tailscale, Linux"
+    "Claude Agent SDK, Trigger.dev, ClickUp API"
 )
 
 project(
-    "AI Security Automation Platform",
-    "Designed and deployed an AI-assisted security testing platform integrating Hermes AI agents, MCP tooling, Caido Web Proxy, and multiple bug bounty platforms into a unified automation environment.",
+    "Newsletter Automation",
+    "Research-to-send pipeline: sourcing, branded copy, charts and AI imagery, HTML build, Gmail draft — no manual step in between. Runs Kigan's own newsletter.",
     [
-        "Integrated 64+ MCP tools enabling prompt-driven security testing through natural language interaction.",
-        "Connected Caido GraphQL APIs, Intigriti, YesWeHack, and Code4rena platforms into a unified workflow.",
-        "Built modular automation pipelines covering reconnaissance, vulnerability discovery, proof-of-concept generation, and reporting.",
-        "Designed reusable AI-driven workflows capable of orchestrating complex testing tasks through conversational commands."
+        "Fully automated content pipeline from research through branded, ready-to-send HTML email.",
+        "Generates supporting charts and AI imagery matched to brand guidelines.",
+        "Delivers directly to a Gmail draft for final review before send."
     ],
-    "MCP, Python, Go, GraphQL, Hermes, Caido"
+    "Python, OpenRouter, Gmail API"
+)
+
+project(
+    "Hermes \u2014 AI Agent Platform (Adapted)",
+    "Adapted Nous Research's open agent framework into a self-hosted, production-grade platform — Ubuntu VM, Tailscale-only, local LLM inference via Ollama. Infrastructure I live on, not a portfolio piece.",
+    [
+        "Built 28+ reusable AI skill modules with conditional activation and context-aware loading.",
+        "Developed 6 MCP servers exposing 40+ tools for browser automation, API interaction, and workflow execution.",
+        "Built persistent memory architecture supporting vector search and session continuity, integrated with Gmail and Calendar."
+    ],
+    "Python, MCP, Ollama, LangGraph, CrewAI, Chroma/Qdrant, Tailscale, Linux"
 )
 
 project(
     "Seagulls Payroll Management Platform",
     "Designed and developed a full-stack payroll management platform for South African SMEs. SARS-compliant — PAYE, UIF, SDL, EMP201, IRP5.",
     [
-        "Employee onboarding and document management.",
-        "Automated payroll calculations using South African tax regulations.",
-        "UIF, SDL, EMP201, IRP5 and statutory compliance reporting.",
-        "Employee self-service portal with PDF payslip generation and WhatsApp delivery.",
-        "Payroll reporting and analytics."
+        "Automated payroll calculations using South African tax regulations — PAYE, UIF, SDL.",
+        "Statutory compliance reporting: EMP201, IRP5.",
+        "Employee self-service portal with PDF payslip generation and WhatsApp delivery."
     ],
     "Django 4.2, PostgreSQL, Python, WhatsApp Integration"
 )
@@ -205,23 +223,11 @@ project(
     "n8n AI Automation Workflows",
     "Built self-hosted automation systems combining local LLM inference, API orchestration, workflow automation, and scheduled intelligence gathering. Fully local AI processing with zero cloud inference costs.",
     [
-        "Developed automated bug bounty reconnaissance workflows using CRT.sh and HackerTarget APIs.",
-        "Built AI-powered attack surface analysis using Ollama-hosted local models.",
-        "Created automated daily threat-intelligence aggregation and summarisation pipelines.",
+        "Built AI-powered data analysis and summarisation pipelines using Ollama-hosted local models.",
         "Designed fault-tolerant workflows with validation, branching logic, and structured outputs.",
         "Wired local LLMs into Gmail, Sheets, and external APIs \u2014 manual daily admin replaced by triggers."
     ],
-    "n8n, Ollama, REST APIs, JavaScript, SQLite"
-)
-
-project(
-    "OpenClaw \u2014 Local Agent Runtime",
-    "Terminal-based agentic environment using OpenRouter for prompt-driven script execution and LLM benchmarking across providers \u2014 the testbed behind the choices made on client work.",
-    [
-        "Multi-LLM routing across providers for benchmarking and comparison.",
-        "Prompt-driven script execution and automated testing pipelines.",
-    ],
-    "OpenRouter, Python, multi-LLM routing"
+    "n8n, Ollama, REST APIs, JavaScript"
 )
 
 # ── THE ARC (Career History) ──
@@ -236,9 +242,9 @@ def arc_row(year, role, org, note):
     y += 12
     write_line(org, left, 8.5, light)
     y += 11
-    text_block(note, size=9, color=med, leading=11, space_after=8)
+    text_block(note, size=9, color=med, leading=11, space_after=5)
 
-arc_row("2024 \u2013 now", "AI Systems Builder", "Kigan Agentic AI Solutions",
+arc_row("2024 \u2013 now", "Founder & AI Systems Builder", "Kigan Agentic AI Solutions",
     "Self-taught, in public, on live systems. Two years from spreadsheet automation to a full agentic platform.")
 
 arc_row("2017 \u2013 now", "Owner", "Seagulls Pub & Grill \u00b7 Bredasdorp, South Africa",
@@ -255,8 +261,8 @@ arc_row("2004 \u2013 2007", "Audit & Article Clerk", "Luyt Proudfoot Hall & Asso
 header("TECHNICAL SKILLS")
 
 skill_group("Agentic AI", [
-    "Hermes (Nous Research, adapted)", "LangGraph", "CrewAI", "MCP",
-    "Claude Code", "Prompt-Driven Development", "Multi-Agent Architectures", "LLM Orchestration"
+    "Claude Code", "Prompt-Driven Development", "Hermes (Nous Research, adapted)", "LangGraph", "CrewAI", "MCP",
+    "Multi-Agent Architectures", "LLM Orchestration"
 ])
 
 skill_group("LLM Runtime", [
