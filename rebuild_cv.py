@@ -117,7 +117,7 @@ write_line("Cameron James Weyers", left, 18, dark)
 y += 22
 
 # ── CONTACT LINE ──
-contact = "Bredasdorp, Western Cape, South Africa  |  cameronweyers@gmail.com  |  linkedin.com/in/cameron-weyers-132a074b  |  github.com/Koslovski79"
+contact = "Bredasdorp, Western Cape, South Africa  |  cameronweyers@gmail.com  |  linkedin.com/in/cameron-weyers-132a074b  |  github.com/kigansolutions"
 words = contact.split(" ")
 line = ""
 lines = []
@@ -139,7 +139,7 @@ for ln in lines:
 header("SUMMARY")
 paragraphs = [
     "AI Systems Builder and Automation Specialist with hands-on experience designing and deploying agentic AI systems, workflow automation, and business software — built from the operating side.",
-    "Experienced in building production-grade systems using prompt-driven development, local and cloud-hosted LLMs, Docker infrastructure, workflow automation platforms, APIs, and custom orchestration frameworks. Background in audit and accounting, with nine years as a business owner-operator. Proven ability to rapidly prototype functional solutions, integrate multiple systems, and translate business requirements into working software.",
+    "Experienced in building production-grade systems using prompt-driven development, local and cloud-hosted LLMs, workflow automation platforms, APIs, and custom orchestration frameworks. Background in audit and accounting, with nine years as a business owner-operator. Proven ability to rapidly prototype functional solutions, integrate multiple systems, and translate business requirements into working software.",
     "Everything I build runs in production, not just in demos. Comfortable working independently, learning new technologies quickly, and building practical solutions in rapidly evolving AI-first environments."
 ]
 for p in paragraphs:
@@ -155,7 +155,6 @@ y += 13
 for b in [
     "Built and deployed custom business applications, automation systems, and AI-assisted operational tools.",
     "Designed SARS-compliant payroll automation and reporting systems.",
-    "Developed POS infrastructure supporting daily hospitality operations.",
     "Implemented AI tooling and workflow automation to improve operational efficiency.",
     "Managed business operations, financial reporting, procurement, staffing, and compliance."
 ]:
@@ -186,7 +185,7 @@ project(
         "Built modular automation pipelines covering reconnaissance, vulnerability discovery, proof-of-concept generation, and reporting.",
         "Designed reusable AI-driven workflows capable of orchestrating complex testing tasks through conversational commands."
     ],
-    "MCP, Python, Go, GraphQL, Docker, Hermes, Caido"
+    "MCP, Python, Go, GraphQL, Hermes, Caido"
 )
 
 project(
@@ -200,20 +199,6 @@ project(
         "Payroll reporting and analytics."
     ],
     "Django 4.2, PostgreSQL, Python, WhatsApp Integration"
-)
-
-project(
-    "Seagulls Point-of-Sale Platform",
-    "Built a comprehensive restaurant management and POS solution supporting end-to-end operational workflows. Designed for the way a real Friday service moves, not the way a demo does.",
-    [
-        "Product, inventory, purchasing and supplier management.",
-        "Reservation and table management.",
-        "Kitchen Display System integration.",
-        "Multi-tender payment handling.",
-        "VAT reporting and compliance.",
-        "46 models in production."
-    ],
-    "Django 4.2, PostgreSQL, Python"
 )
 
 project(
@@ -253,7 +238,7 @@ def arc_row(year, role, org, note):
     y += 11
     text_block(note, size=9, color=med, leading=11, space_after=8)
 
-arc_row("2024 \u2013 now", "AI Systems Builder", "Hermes \u00b7 automation \u00b7 payroll \u2014 everything in production",
+arc_row("2024 \u2013 now", "AI Systems Builder", "Kigan Agentic AI Solutions",
     "Self-taught, in public, on live systems. Two years from spreadsheet automation to a full agentic platform.")
 
 arc_row("2017 \u2013 now", "Owner", "Seagulls Pub & Grill \u00b7 Bredasdorp, South Africa",
@@ -284,7 +269,7 @@ skill_group("Automation & Integration", [
 ])
 
 skill_group("Development", [
-    "Python", "Django", "PostgreSQL", "Docker", "Linux", "Git & GitHub"
+    "Python", "Django", "PostgreSQL", "Linux", "Git & GitHub"
 ])
 
 skill_group("Memory & Data", [
@@ -298,7 +283,7 @@ skill_group("Infrastructure", [
 # ── CONTINUOUS PROFESSIONAL DEVELOPMENT ──
 header("CONTINUOUS PROFESSIONAL DEVELOPMENT", size=10)
 text_block(
-    "AI Automation & Agentic Systems  \u2022  Prompt Engineering  \u2022  Claude Code Ecosystem  \u2022  MCP Architecture  \u2022  Workflow Automation  \u2022  Docker & Containerisation  \u2022  API Design & Integration  \u2022  Business Systems Architecture"
+    "AI Automation & Agentic Systems  \u2022  Prompt Engineering  \u2022  Claude Code Ecosystem  \u2022  MCP Architecture  \u2022  Workflow Automation  \u2022  API Design & Integration  \u2022  Business Systems Architecture"
 )
 
 pages = doc.page_count
