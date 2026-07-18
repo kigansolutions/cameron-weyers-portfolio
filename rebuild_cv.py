@@ -117,7 +117,7 @@ write_line("Cameron James Weyers", left, 18, dark)
 y += 22
 
 # ── CONTACT LINE ──
-contact = "Bredasdorp, Western Cape, South Africa  |  cameronweyers@gmail.com  |  linkedin.com/in/cameron-weyers-132a074b  |  github.com/kigansolutions"
+contact = "Bredasdorp, Western Cape, South Africa  |  cameronweyers@gmail.com  |  linkedin.com/in/cameron-weyers  |  github.com/kigansolutions"
 words = contact.split(" ")
 line = ""
 lines = []
