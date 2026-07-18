@@ -49,8 +49,9 @@ a{color:inherit;text-decoration:none}
 /* ---------- nav ---------- */
 .nav{position:sticky;top:0;z-index:100;background:rgba(251,248,242,0.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding-top:0.95rem;padding-bottom:0.95rem}
-.nav-name{font-family:var(--serif);font-size:1.02rem;font-weight:600;letter-spacing:0.01em}
+.nav-name{display:flex;align-items:center;gap:0.6rem;font-family:var(--serif);font-size:1.02rem;font-weight:600;letter-spacing:0.01em}
 .nav-name span{color:var(--green)}
+.nav-name img{height:1.35rem;width:auto;display:block}
 .nav-links{display:flex;gap:1.75rem;align-items:center}
 .nav-links a{font-family:var(--mono);font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--ink-3);transition:color .15s}
 .nav-links a:hover,.nav-links a.active{color:var(--green)}
@@ -150,6 +151,8 @@ section.block{padding:clamp(3.75rem,8vw,6rem) 0;border-bottom:1px solid var(--ru
 .status.live{color:var(--green);background:var(--green-tint);border:1px solid rgba(30,92,65,0.25)}
 .work p{font-size:0.87rem;font-weight:300;line-height:1.65;color:var(--ink-2);margin-bottom:1rem;flex:1}
 .work-tools{font-family:var(--mono);font-size:0.62rem;letter-spacing:0.05em;color:var(--ink-3)}
+.work-link{display:inline-block;margin-top:0.75rem;font-family:var(--mono);font-size:0.62rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--green);border-bottom:1px solid transparent}
+.work-link:hover{border-color:var(--green)}
 @media(max-width:680px){.works{grid-template-columns:1fr}}
 
 /* ---------- stack ---------- */
@@ -215,7 +218,7 @@ footer{padding:1.9rem 0;background:var(--paper)}
 
 <nav class="nav" aria-label="Primary">
   <div class="wrap nav-in">
-    <a class="nav-name" href="#top">Cameron Weyers<span>.</span></a>
+    <a class="nav-name" href="#top"><img src="kigan-mark.png" alt="Kigan mark" width="240" height="226">Cameron Weyers<span>.</span></a>
     <div class="nav-links">
       <a href="#build">What I build</a>
       <a href="#hermes">Hermes</a>
@@ -228,7 +231,7 @@ footer{padding:1.9rem 0;background:var(--paper)}
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div class="hero-kicker"><span class="label green">Kigan Solutions · AI Systems Builder · Bredasdorp, South Africa</span></div>
+    <div class="hero-kicker"><span class="label green"><a href="https://kigan-website.vercel.app" target="_blank" rel="noopener" style="border-bottom:1px solid currentColor">Kigan Agentic AI Solutions</a> · AI Systems Builder · Bredasdorp, South Africa</span></div>
     <h1>Systems that run themselves, built by someone who's <em>run everything else.</em></h1>
     <p class="hero-lede">Rosette-level kitchens in the UK. Nine years owning a restaurant on thin margins. A background in audit and accounting. I came to AI from the operating side — so I build for the Friday-night failure and <strong>the number that has to move</strong>, not for the demo.</p>
     <div class="hero-row">
@@ -315,6 +318,7 @@ footer{padding:1.9rem 0;background:var(--paper)}
           <span class="pill">LangGraph + CrewAI</span>
           <span class="pill">Vector memory</span>
           <span class="pill">MCP → Gmail / Calendar</span>
+          <a class="pill green" href="https://github.com/Koslovski79/hermes-agent-framework" target="_blank" rel="noopener">View repo ↗</a>
         </div>
       </div>
       <div class="decisions">
@@ -348,19 +352,34 @@ footer{padding:1.9rem 0;background:var(--paper)}
     </div>
     <div class="works">
       <div class="work">
+        <div class="work-top"><h3>LinkedIn drafting agent</h3><span class="status live">Live</span></div>
+        <p>Weekly agent that researches live discussion, drafts a post in my voice with the Claude Agent SDK, and files it to ClickUp for review — unattended, every Monday. Built for Kigan.</p>
+        <div class="work-tools">Claude Agent SDK · Trigger.dev · ClickUp API</div>
+        <a class="work-link" href="https://github.com/kigansolutions/linkedin-trigger-agent" target="_blank" rel="noopener">View repo →</a>
+      </div>
+      <div class="work">
+        <div class="work-top"><h3>Newsletter automation</h3><span class="status live">Live</span></div>
+        <p>Research-to-send pipeline: sourcing, branded copy, charts and AI imagery, HTML build, Gmail draft — no manual step in between. Runs Kigan's own newsletter.</p>
+        <div class="work-tools">Python · OpenRouter · Gmail API</div>
+        <a class="work-link" href="https://github.com/kigansolutions/newsletter-automation" target="_blank" rel="noopener">View repo →</a>
+      </div>
+      <div class="work">
         <div class="work-top"><h3>Payroll platform</h3><span class="status live">Live</span></div>
         <p>SARS-compliant payroll and tax automation — PAYE, UIF, SDL — in Python/Django, with WhatsApp payslip delivery to staff. Runs the payroll at my own restaurant every month.</p>
         <div class="work-tools">Python · Django · PostgreSQL · WhatsApp API</div>
+        <a class="work-link" href="https://github.com/Koslovski79/ai-systems-portfolio/tree/main/payroll-system" target="_blank" rel="noopener">View architecture →</a>
       </div>
       <div class="work">
         <div class="work-top"><h3>POS platform</h3><span class="status live">Live</span></div>
         <p>Custom mobile point-of-sale for hospitality — reservations, inventory, table management, reporting. Designed for the way a real Friday service moves, not the way a demo does.</p>
         <div class="work-tools">Django · PostgreSQL · 46 models in production</div>
+        <a class="work-link" href="https://github.com/Koslovski79/ai-systems-portfolio/tree/main/pos-system" target="_blank" rel="noopener">View architecture →</a>
       </div>
       <div class="work">
         <div class="work-top"><h3>n8n automation pipelines</h3><span class="status live">Live</span></div>
         <p>Self-hosted workflows wiring local LLMs into Gmail, Sheets, and external APIs — inbox summaries, AI categorisation, data enrichment. Manual daily admin, replaced by triggers.</p>
         <div class="work-tools">n8n · Ollama · Google Workspace · webhooks</div>
+        <a class="work-link" href="https://github.com/Koslovski79/n8n-security-automation" target="_blank" rel="noopener">View repo →</a>
       </div>
       <div class="work">
         <div class="work-top"><h3>OpenClaw agent runtime</h3><span class="status live">Live</span></div>
@@ -454,14 +473,15 @@ footer{padding:1.9rem 0;background:var(--paper)}
       <a class="btn btn-line" href="https://linkedin.com/in/cameron-weyers-132a074b">LinkedIn ↗</a>
       <a class="btn btn-line" href="https://github.com/Koslovski79">GitHub ↗</a>
     </div>
-    <div class="cta-line"><a href="mailto:cameronweyers@gmail.com">cameronweyers@gmail.com</a> · Kigan Solutions · Bredasdorp, Western Cape · remote-ready · contractor preferred</div>
+    <div class="cta-line"><a href="mailto:cameronweyers@gmail.com">cameronweyers@gmail.com</a> · <a href="https://kigan-website.vercel.app" target="_blank" rel="noopener">Kigan Agentic AI Solutions</a> · Bredasdorp, Western Cape · remote-ready · contractor preferred</div>
   </div>
 </section>
 
 <footer>
   <div class="wrap foot-in">
-    <div class="foot-c">© 2026 Cameron Weyers · Kigan Solutions — built with AI, owned entirely by me</div>
+    <div class="foot-c">© 2026 Cameron Weyers · Kigan Agentic AI Solutions — built with AI, owned entirely by me</div>
     <div class="foot-l">
+      <a href="https://kigan-website.vercel.app" target="_blank" rel="noopener">Kigan</a>
       <a href="https://github.com/Koslovski79">GitHub</a>
       <a href="https://linkedin.com/in/cameron-weyers-132a074b">LinkedIn</a>
       <a href="mailto:cameronweyers@gmail.com">Email</a>
