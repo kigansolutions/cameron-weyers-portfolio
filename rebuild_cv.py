@@ -138,7 +138,7 @@ for ln in lines:
 # ── SUMMARY ──
 header("SUMMARY")
 paragraphs = [
-    "AI Systems Builder and founder of Kigan Agentic AI Solutions — designing and shipping custom AI agents that automate real business workflows, from content drafting to reporting to day-to-day operations. Built from the operating side, not the demo side.",
+    "AI Systems Builder and founder of Kigan Agentic AI Solutions — designing and shipping custom AI agents, RAG-backed where memory matters, that automate real business workflows from content drafting to reporting to day-to-day operations. Built from the operating side, not the demo side.",
     "Nine years as a business owner-operator, with a background in audit and accounting. Everything I build runs in production — I'm my own harshest client, and every system is judged by what it costs when it breaks, not how it looks in a slide."
 ]
 for p in paragraphs:
@@ -203,7 +203,7 @@ project(
     [
         "Built 28+ reusable AI skill modules with conditional activation and context-aware loading.",
         "Developed 6 MCP servers exposing 40+ tools for browser automation, API interaction, and workflow execution.",
-        "Built persistent memory architecture supporting vector search and session continuity, integrated with Gmail and Calendar."
+        "Built RAG-based persistent memory architecture supporting vector search and session continuity, integrated with Gmail and Calendar."
     ],
     "Python, MCP, Ollama, LangGraph, CrewAI, Chroma/Qdrant, Tailscale, Linux"
 )
@@ -279,7 +279,7 @@ skill_group("Development", [
 ])
 
 skill_group("Memory & Data", [
-    "Chroma", "Qdrant", "SQLite", "Vector Embeddings", "Vector Search"
+    "RAG", "Chroma", "Qdrant", "SQLite", "Vector Embeddings", "Vector Search"
 ])
 
 skill_group("Infrastructure", [
