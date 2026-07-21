@@ -89,7 +89,7 @@ def bullet(text, size=9.5, color=med, leading=12, indent=14, space_after=2):
     for i, ln in enumerate(lines):
         ensure_space(leading)
         if i == 0:
-            write_line("\u2022", left + 4, size, green)
+            write_line("•", left + 4, size, green)
         write_line(ln, left + indent, size, color)
         y += leading
     y += space_after
@@ -110,7 +110,7 @@ def skill_group(name, items):
     ensure_space(40)
     write_line(name, left, 9.5, dark)
     y += 12
-    text_block("  " + "  \u2022  ".join(items), size=9, color=med, leading=11, space_after=4)
+    text_block("  " + "  •  ".join(items), size=9, color=med, leading=11, space_after=4)
 
 # ── NAME ──
 write_line("Cameron James Weyers", left, 18, dark)
@@ -148,13 +148,13 @@ for p in paragraphs:
 header("EXPERIENCE")
 write_line("Founder & AI Systems Builder", left, 10, dark)
 y += 12
-write_line("2024 \u2013 Present", left, 9, light)
-write_line("Kigan Agentic AI Solutions \u00b7 Remote", left + 120, 9, med)
+write_line("2024 – Present", left, 9, light)
+write_line("Kigan Agentic AI Solutions · Remote", left + 120, 9, med)
 y += 13
 for b in [
     "Design and build custom AI agents that automate content, research, and workflow tasks for clients — Claude Agent SDK, Trigger.dev, n8n, and direct API integrations.",
     "Shipped a weekly LinkedIn content agent and a full research-to-send newsletter pipeline, both running unattended in production.",
-    "Adapted Nous Research's open agent framework into Hermes, a self-hosted platform running six MCP servers, 40+ tools, and daily automated briefings.",
+    "Adapted Nous Research's open agent framework into Hermes, a self-hosted platform with persistent memory and daily automated briefings.",
     "Self-taught, in public: two years from spreadsheet automation to a full agentic platform, every build shipped to production, not demoed."
 ]:
     bullet(b)
@@ -198,11 +198,11 @@ project(
 )
 
 project(
-    "Hermes \u2014 AI Agent Platform (Adapted)",
+    "Hermes — AI Agent Platform (Adapted)",
     "Adapted Nous Research's open agent framework into a self-hosted, production-grade platform — Ubuntu VM, Tailscale-only, local LLM inference via Ollama. Infrastructure I live on, not a portfolio piece.",
     [
-        "Built 28+ reusable AI skill modules with conditional activation and context-aware loading.",
-        "Developed 6 MCP servers exposing 40+ tools for browser automation, API interaction, and workflow execution.",
+        "Built a library of reusable AI skill modules with conditional activation and context-aware loading.",
+        "Developed MCP servers exposing tools for browser automation, API interaction, and workflow execution.",
         "Built RAG-based persistent memory architecture supporting vector search and session continuity, integrated with Gmail and Calendar."
     ],
     "Python, MCP, Ollama, LangGraph, CrewAI, Chroma/Qdrant, Tailscale, Linux"
@@ -225,7 +225,7 @@ project(
     [
         "Built AI-powered data analysis and summarisation pipelines using Ollama-hosted local models.",
         "Designed fault-tolerant workflows with validation, branching logic, and structured outputs.",
-        "Wired local LLMs into Gmail, Sheets, and external APIs \u2014 manual daily admin replaced by triggers."
+        "Wired local LLMs into Gmail, Sheets, and external APIs — manual daily admin replaced by triggers."
     ],
     "n8n, Ollama, REST APIs, JavaScript"
 )
@@ -244,17 +244,17 @@ def arc_row(year, role, org, note):
     y += 11
     text_block(note, size=9, color=med, leading=11, space_after=5)
 
-arc_row("2024 \u2013 now", "Founder & AI Systems Builder", "Kigan Agentic AI Solutions",
+arc_row("2024 – now", "Founder & AI Systems Builder", "Kigan Agentic AI Solutions",
     "Self-taught, in public, on live systems. Two years from spreadsheet automation to a full agentic platform.")
 
-arc_row("2017 \u2013 now", "Owner", "Seagulls Pub & Grill \u00b7 Bredasdorp, South Africa",
+arc_row("2017 – now", "Owner", "Seagulls Pub & Grill · Bredasdorp, South Africa",
     "Nine years on thin margins. Every system shipped is filtered through what it costs when it fails at 19:00 on a Friday.")
 
-arc_row("2009 \u2013 2017", "Senior Sous Chef \u2192 Head Chef \u2192 Chef Patron",
-    "Stoke Place (3 AA Rosettes) \u00b7 Macdonald Bear (2 AA Rosettes) \u00b7 The Sun Inn \u2014 UK",
+arc_row("2009 – 2017", "Senior Sous Chef → Head Chef → Chef Patron",
+    "Stoke Place (3 AA Rosettes) · Macdonald Bear (2 AA Rosettes) · The Sun Inn — UK",
     "Eight years of high-velocity systems under pressure: zero tolerance for anything that doesn't work when it has to.")
 
-arc_row("2004 \u2013 2007", "Audit & Article Clerk", "Luyt Proudfoot Hall & Associates \u00b7 South Africa",
+arc_row("2004 – 2007", "Audit & Article Clerk", "Luyt Proudfoot Hall & Associates · South Africa",
     "Where the habit started: build to the number, not the demo.")
 
 # ── TECHNICAL SKILLS ──
@@ -289,10 +289,10 @@ skill_group("Infrastructure", [
 # ── CONTINUOUS PROFESSIONAL DEVELOPMENT ──
 header("CONTINUOUS PROFESSIONAL DEVELOPMENT", size=10)
 text_block(
-    "AI Automation & Agentic Systems  \u2022  Prompt Engineering  \u2022  Claude Code Ecosystem  \u2022  MCP Architecture  \u2022  Workflow Automation  \u2022  API Design & Integration  \u2022  Business Systems Architecture"
+    "AI Automation & Agentic Systems  •  Prompt Engineering  •  Claude Code Ecosystem  •  MCP Architecture  •  Workflow Automation  •  API Design & Integration  •  Business Systems Architecture"
 )
 
 pages = doc.page_count
 doc.save("cameron-weyers-cv.pdf")
 doc.close()
-print(f"CV rebuilt successfully \u2014 {pages} pages")
+print(f"CV rebuilt successfully — {pages} pages")
